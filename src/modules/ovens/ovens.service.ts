@@ -19,20 +19,20 @@ export class OvensService {
 
   async findOne(id: number) {
     return this.prisma.oven.findUnique({
-      where: { oven_id: id },
+      where: { id },
     });
   }
 
   async update(id: number, updateOvenDto: UpdateOvenDto) {
     return this.prisma.oven.update({
-      where: { oven_id: id },
+      where: { id },
       data: updateOvenDto,
     });
   }
 
   async remove(id: number) {
     return this.prisma.oven.delete({
-      where: { oven_id: id },
+      where: { id },
     });
   }
 }

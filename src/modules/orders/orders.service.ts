@@ -10,7 +10,13 @@ export class OrdersService {
 
   async create(createOrderDto: CreateOrderDto) {
     return this.prisma.order.create({
-      data: createOrderDto,
+      data: {
+        total_amount: createOrderDto.total_amount,
+        order_status: createOrderDto.order_status,
+        user: {
+          connect: { id: createOrderDto.user_id },
+        },
+      },
     });
   }
 
