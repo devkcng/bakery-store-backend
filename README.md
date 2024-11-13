@@ -40,7 +40,7 @@ All information of database is inside docker-compose.yml
 - Seed the database (optional, contains dummy data from `prisma/seed.ts`):
 
 ```bash
- npm run seed
+ npm run prisma:seed
 ```
 
 ## Compile and run the project
