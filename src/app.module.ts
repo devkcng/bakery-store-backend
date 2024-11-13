@@ -16,9 +16,15 @@ import { OrderDetailProcessesModule } from './modules/order-detail-processes/ord
 import { OvensModule } from './modules/ovens/ovens.module';
 import { OrderProductToppingsModule } from './modules/order-product-toppings/order-product-toppings.module';
 import { PrismaModule } from './modules/prisma/prisma.module';
+import { UsersModule } from './modules/users/users.module';
+import { CartsModule } from './modules/carts/carts.module';
+import { CartItemsModule } from './modules/cart-items/cart-items.module';
 
 @Module({
   imports: [
+    UsersModule,
+    CartsModule,
+    CartItemsModule,
     CategoriesModule,
     WarehousesModule,
     ProductsModule,
