@@ -7,7 +7,6 @@ import {
   ProcessingStatus,
   OvenStatus,
   CartStatus,
-  AccountType,
   Role,
 } from '@prisma/client';
 
@@ -21,9 +20,7 @@ async function main() {
       phone: '1234567890',
       address: '123 Main St',
       image: 'path/to/image.jpg',
-      account_type: AccountType.LOCAL,
       role: Role.CUSTOMER,
-      provider_account_id: 'provider123',
       password: 'password123',
     },
   });

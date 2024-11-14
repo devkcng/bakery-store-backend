@@ -20,9 +20,6 @@ CREATE TYPE "OvenStatus" AS ENUM ('AVAILABLE', 'IN_USE');
 CREATE TYPE "CartStatus" AS ENUM ('ACTIVE', 'ORDERED', 'ABANDONED');
 
 -- CreateEnum
-CREATE TYPE "AccountType" AS ENUM ('LOCAL', 'GOOGLE', 'TWITTER');
-
--- CreateEnum
 CREATE TYPE "Role" AS ENUM ('CUSTOMER', 'ADMIN');
 
 -- CreateTable
@@ -206,10 +203,8 @@ CREATE TABLE "User" (
     "phone" TEXT,
     "address" TEXT,
     "image" TEXT,
-    "account_type" "AccountType" NOT NULL DEFAULT 'LOCAL',
     "role" "Role" NOT NULL DEFAULT 'CUSTOMER',
-    "provider_account_id" TEXT,
-    "password" TEXT,
+    "password" TEXT NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );

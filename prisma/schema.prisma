@@ -50,12 +50,6 @@ enum CartStatus {
   ABANDONED
 }
 
-enum AccountType {
-  LOCAL
-  GOOGLE
-  TWITTER
-}
-
 enum Role {
   CUSTOMER
   ADMIN
@@ -240,10 +234,8 @@ model User {
   phone               String?
   address             String?
   image               String?
-  account_type        AccountType @default(LOCAL)
   role                Role        @default(CUSTOMER)
-  provider_account_id String?
-  password            String?
+  password            String
   carts               Cart[]
   orders              Order[]
 }
