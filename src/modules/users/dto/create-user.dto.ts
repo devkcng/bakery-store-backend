@@ -1,11 +1,9 @@
-import { IsEmail, IsString, IsOptional, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsString, IsOptional, IsNotEmpty, IsEnum } from 'class-validator';
 import { Role } from '@prisma/client';
-import { IsEmailUnique } from '@/shared/validators/is-email-unique.decorator';
 
 export class CreateUserDto {
   @IsNotEmpty({ message: 'Email is required' })
   @IsEmail({}, { message: 'Email must be a valid email address' })
-  @IsEmailUnique({ message: 'Email already exists. Choose another email.' })
   email: string;
 
   @IsOptional()
@@ -20,9 +18,9 @@ export class CreateUserDto {
   @IsString({ message: 'Image must be a string' })
   image?: string;
 
-  @IsNotEmpty({ message: 'Role is required' })
-  @IsString({ message: 'Role must be a string' })
-  role: Role;
+  @IsOptional()
+  @IsEnum(Role, { message: 'Role must be either CUSTOMER or ADMIN value' })
+  role?: Role;
 
   @IsNotEmpty({ message: 'Password is required' })
   @IsString({ message: 'Password must be a string' })

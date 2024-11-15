@@ -8,6 +8,14 @@ export class UsersService {
   constructor(private prisma: PrismaService) {}
 
   async create(createUserDto: CreateUserDto) {
+    const existingUser = await this.prisma.user.findUnique({
+      where: { email: createUserDto.email },
+    });
+
+    if (existingUser) {
+      throw new Error('Email is already in use');
+    }
+
     return this.prisma.user.create({
       data: createUserDto,
     });
