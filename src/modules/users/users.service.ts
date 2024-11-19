@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/modules/prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { hashPasswordHelper } from '@/helpers/util';
 
 @Injectable()
 export class UsersService {
@@ -16,8 +17,13 @@ export class UsersService {
       throw new Error('Email is already in use');
     }
 
+    const hashPassword = await hashPasswordHelper(createUserDto.password);
+
     return this.prisma.user.create({
-      data: createUserDto,
+      data: {
+        ...createUserDto,
+        password: hashPassword,
+      },
     });
   }
 
