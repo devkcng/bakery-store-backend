@@ -19,6 +19,10 @@ import { PrismaModule } from './modules/prisma/prisma.module';
 import { UsersModule } from './modules/users/users.module';
 import { CartsModule } from './modules/carts/carts.module';
 import { CartItemsModule } from './modules/cart-items/cart-items.module';
+import { AuthModule } from './auth/auth.module';
+import { PaypalModule } from './payments/paypal/paypal.module';
+import { VnpayModule } from './payments/vnpay/vnpay.module';
+import { PrismaService } from './modules/prisma/prisma.service';
 
 @Module({
   imports: [
@@ -40,8 +44,11 @@ import { CartItemsModule } from './modules/cart-items/cart-items.module';
     OvensModule,
     OrderProductToppingsModule,
     PrismaModule,
+    AuthModule,
+    PaypalModule,
+    VnpayModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}
