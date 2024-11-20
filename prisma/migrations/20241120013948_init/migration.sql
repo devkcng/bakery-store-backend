@@ -48,6 +48,7 @@ CREATE TABLE "Product" (
     "price" DOUBLE PRECISION NOT NULL,
     "description" TEXT,
     "img_path" TEXT,
+    "max_daily_quantity_limit" INTEGER,
     "product_capacity_per_batch" INTEGER,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
