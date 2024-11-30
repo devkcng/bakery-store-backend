@@ -17,10 +17,7 @@ CREATE TYPE "ProcessingStatus" AS ENUM ('WAITING', 'IN_PROGRESS', 'COMPLETED');
 CREATE TYPE "OvenStatus" AS ENUM ('AVAILABLE', 'IN_USE');
 
 -- CreateEnum
-CREATE TYPE "CartStatus" AS ENUM ('ACTIVE', 'ORDERED', 'ABANDONED');
-
--- CreateEnum
-CREATE TYPE "Role" AS ENUM ('CUSTOMER', 'ADMIN');
+CREATE TYPE "Role" AS ENUM ('ADMIN', 'MANAGER', 'CHEF', 'STAFF');
 
 -- CreateTable
 CREATE TABLE "Category" (
@@ -77,7 +74,6 @@ CREATE TABLE "RecipeDetail" (
 -- CreateTable
 CREATE TABLE "Order" (
     "id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
     "total_amount" DOUBLE PRECISION NOT NULL,
     "order_status" "OrderStatus" NOT NULL DEFAULT 'PENDING',
     "order_date" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -176,38 +172,16 @@ CREATE TABLE "Oven" (
 );
 
 -- CreateTable
-CREATE TABLE "Cart" (
+CREATE TABLE "UserAccount" (
     "id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
-    "status" "CartStatus" NOT NULL DEFAULT 'ACTIVE',
-    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "updated_at" TIMESTAMP(3) NOT NULL,
-
-    CONSTRAINT "Cart_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "CartItem" (
-    "id" SERIAL NOT NULL,
-    "cart_id" INTEGER NOT NULL,
-    "product_id" INTEGER NOT NULL,
-    "quantity" INTEGER NOT NULL,
-    "added_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-
-    CONSTRAINT "CartItem_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
-CREATE TABLE "User" (
-    "id" SERIAL NOT NULL,
-    "email" TEXT NOT NULL,
-    "phone" TEXT,
-    "address" TEXT,
-    "image" TEXT,
-    "role" "Role" NOT NULL DEFAULT 'CUSTOMER',
+    "username" TEXT NOT NULL,
     "password" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "phone_number" TEXT NOT NULL,
+    "address" TEXT NOT NULL,
+    "role" "Role" NOT NULL,
 
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "UserAccount_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -220,7 +194,10 @@ CREATE UNIQUE INDEX "Transaction_order_id_key" ON "Transaction"("order_id");
 CREATE UNIQUE INDEX "ShippingInfo_order_id_key" ON "ShippingInfo"("order_id");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
+CREATE UNIQUE INDEX "UserAccount_username_key" ON "UserAccount"("username");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "UserAccount_email_key" ON "UserAccount"("email");
 
 -- AddForeignKey
 ALTER TABLE "Product" ADD CONSTRAINT "Product_category_id_fkey" FOREIGN KEY ("category_id") REFERENCES "Category"("id") ON DELETE SET NULL ON UPDATE CASCADE;
@@ -233,9 +210,6 @@ ALTER TABLE "RecipeDetail" ADD CONSTRAINT "RecipeDetail_warehouse_id_fkey" FOREI
 
 -- AddForeignKey
 ALTER TABLE "RecipeDetail" ADD CONSTRAINT "RecipeDetail_recipe_id_fkey" FOREIGN KEY ("recipe_id") REFERENCES "Recipe"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Order" ADD CONSTRAINT "Order_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "OrderProductTopping" ADD CONSTRAINT "OrderProductTopping_order_detail_id_fkey" FOREIGN KEY ("order_detail_id") REFERENCES "OrderDetail"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
@@ -266,12 +240,3 @@ ALTER TABLE "OrderDetailProcess" ADD CONSTRAINT "OrderDetailProcess_order_detail
 
 -- AddForeignKey
 ALTER TABLE "OrderDetailProcess" ADD CONSTRAINT "OrderDetailProcess_oven_id_fkey" FOREIGN KEY ("oven_id") REFERENCES "Oven"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Cart" ADD CONSTRAINT "Cart_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "CartItem" ADD CONSTRAINT "CartItem_cart_id_fkey" FOREIGN KEY ("cart_id") REFERENCES "Cart"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "CartItem" ADD CONSTRAINT "CartItem_product_id_fkey" FOREIGN KEY ("product_id") REFERENCES "Product"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
