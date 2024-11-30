@@ -190,225 +190,294 @@ async function main() {
     skipDuplicates: true,
   });
 
-  await prisma.recipe.createMany({
-    data: [
-      {
-        name: `Bước 1: Làm sốt cà chua
-1. Luộc cà chua trong 5 phút sau đó lột vỏ, băm nhỏ hành tây tỏi,
-2. Phi hành tỏi, cho cà chua, đường muối, tương cà rồi khuấy đều cho đến khi sệt lại trong khoảng 10p
-Bước 2: Làm đế pizza
-1. Cho nước, men, mật ong, dầu oliu, rây hết bột mì và nhào tất cả, ủ trong 2 tiếng
-2. Nặn thành hình tròn bán kính 9, 7, 12 tương đương nhỏ vừa lớn
-Bước 3: Cho đế vào lò nướng nhiệt độ 230 -250, quét sốt cà chua và cho tất cả nhân vào và nướng trong 10p`,
-        product_id: 1,
-        complete_time: 180,
-      },
-      {
-        name: `Bước 1: Làm phần vỏ bánh
-1. Cho bột mì, bơ thực vật nhào mịn và để trong ngăn đá tủ lạnh khoảng 15 phút. Cho nốt chỗ bột mì còn lại vào trộn đều cùng đường, lòng đỏ trứng gà và 150ml nước.
-2. Nhào bột thật mịn rồi cán mỏng miếng bột thành hình chữ nhật, lấy phần bột trong tủ lạnh cho vào chính giữa miếng bột, cán nhẹ nhàng. Gấp bột làm 3 rồi bọc màng bọc thực phẩm cho vào ngăn đá 15 phút.
-3. Bột sau khi đã nghỉ khoảng 15 phút trong tủ lạnh, đem cán mỏng rồi gấp lại làm 3, cho vào ngăn đá tủ lạnh 15 phút. Lặp đi lặp lại khoảng 4-5 lần để được lớp vỏ bánh nhiều lớp rất đẹp.
-4. Lần cán bột cuối cùng bạn chỉ làm mỏng khoảng 3mm rồi dùng khuôn cắt tạo thành những miếng tròn và lót bột vào khuôn nướng.
-Bước 2: Làm nhân bánh
-1. Cho sữa đặc và sữa tươi không đường khuấy đều cho sữa đặc tan rồi cho vào lò vi sóng quay trong khoảng 3 phút.
-2. Đánh tan trứng, cho thêm một chút vani đánh cùng cho thơm, đổ trứng vào bát sữa nóng, khuấy nhanh và đều tay.
-Bước 3: Nướng bánh
-1. Bật lò nướng ở nhiệt độ 200 độ C trong khoảng 10 phút cho lò nóng đều. Từ từ rót phần nhân trứng sữa vào từng khuôn bánh rồi đặt khay vào lò nướng.
-2. Nướng bánh khoảng 20 phút khi thấy vỏ bánh chín vàng đều. Cuối cùng lấy bánh bày ra đĩa và trang trí.`,
-        product_id: 2,
-        complete_time: 120,
-      },
-      {
-        name: `1. Bật nóng lò nướng. Cho khay thiếc muffin có lót sẵn cốc giấy vào
-2. Bơ nhạt đun cách thủy cho tan chảy, để nguội.
-3. Rây bột mì, bột nở, muối vào chung một bát. Trộn đều chúng.
-4. Đập trứng gà, sữa tươi, vani, dầu ăn vào chung một bát. Đánh cho tan đều.
-5. Thêm từ từ bơ đã nguội vào hỗn hợp. Trộn đều cho hòa quyện.
-6. Thêm từ từ bột khô vào hỗn hợp ướt. Lúc này, thêm nho khô vào trộn đều nhé.
-Chia bột vào từng khuôn. Đem nướng ở 180 độ trong 20 phút`,
-        product_id: 3,
-        complete_time: 70,
-      },
-      {
-        name: `Bước 1: Làm sốt kem
-1. Đun sữa tươi với bơ cho tan, tiếp theo cho đường vào khuấy đều.
-2. Đun nhỏ lửa, thêm vanilla rồi khuấy đều cho đến khi sốt sệt lại.
-Bước 2: Làm vỏ bánh
-1. Trộn bột mì với bột nở và đường, thêm bơ vào trộn đều cho bột có dạng hạt vụn.
-2. Thêm sữa vào từ từ, trộn đều cho đến khi bột trở nên mềm mịn.
-Bước 3: Nướng bánh
-1. Dùng khuôn bánh tart để nặn bột vào khuôn.
-2. Nướng ở nhiệt độ 180 độ C trong khoảng 15-20 phút cho đến khi vỏ bánh vàng đều.
-Bước 4: Hoàn thành
-1. Đổ sốt kem vào trong vỏ bánh và trang trí với trái cây tươi.`,
-        product_id: 4,
-        complete_time: 90,
-      },
-      {
-        name: `Bước 1: Làm vỏ bánh
-1. Trộn bột mì, đường, bột nở vào một bát lớn, sau đó thêm bơ vào và nhào cho đến khi bột thành một khối đồng nhất.
-2. Dùng tay ấn bột thành hình tròn rồi cho vào khuôn, tạo thành lớp vỏ mỏng đều.
-Bước 2: Làm nhân bánh
-1. Trộn kem phô mai, đường và trứng cho đến khi hỗn hợp mịn.
-2. Cho hỗn hợp vào trong khuôn đã lót vỏ bánh.
-Bước 3: Nướng bánh
-1. Đặt bánh vào lò nướng ở nhiệt độ 180 độ C trong khoảng 25-30 phút.
-2. Sau khi bánh chín, để nguội trong khuôn rồi bỏ ra đĩa và thưởng thức.`,
-        product_id: 5,
-        complete_time: 70,
-      },
-      {
-        name: `Bước 1: Làm phần vỏ bánh
-1. Trộn bột mì, muối, bơ và nước vào một bát lớn để tạo thành khối bột mềm mịn.
-2. Lăn bột thành một miếng dày khoảng 1 cm rồi dùng khuôn cắt thành các miếng hình vuông nhỏ.
-Bước 2: Làm nhân bánh
-1. Trộn hạt dẻ, bột cacao và đường vào một bát khác.
-2. Đổ nhân vào mỗi miếng bột đã cắt sẵn, gập đôi và ép mép lại cho chắc.
-Bước 3: Nướng bánh
-1. Đặt các miếng bánh vào khay nướng, nướng ở nhiệt độ 180 độ C trong 15 phút cho đến khi vỏ bánh vàng giòn.
-Bước 4: Hoàn thành
-1. Lấy bánh ra ngoài, để nguội và thưởng thức.`,
-        product_id: 6,
-        complete_time: 50,
-      },
-      {
-        name: `Bước 1: Làm phần vỏ bánh
-1. Trộn bột mì, đường, bơ và muối vào một bát.
-2. Thêm nước lạnh vào, nhào bột thành khối dẻo, bọc kín và để trong tủ lạnh 30 phút.
-Bước 2: Làm nhân bánh
-1. Đánh trứng với sữa tươi và đường cho đến khi hỗn hợp mịn.
-2. Thêm vani và hạt nhục đậu khấu vào trộn đều.
-Bước 3: Nướng bánh
-1. Đổ nhân vào phần vỏ bánh đã lót khuôn.
-2. Nướng ở nhiệt độ 180 độ C trong khoảng 30-40 phút cho đến khi phần nhân hơi vàng và vỏ bánh giòn.`,
-        product_id: 7,
-        complete_time: 90,
-      },
-      {
-        name: `Bước 1: Làm sốt bơ tỏi
-1. Đun bơ trong một chảo lớn, thêm tỏi vào phi thơm.
-2. Cho gia vị như muối, tiêu, chanh vào đảo đều, để sốt sệt lại.
-Bước 2: Nướng hải sản
-1. Nguyên liệu hải sản (tôm, mực) rửa sạch, chẻ nhỏ.
-2. Nướng trên vỉ nướng hoặc lò vi sóng ở nhiệt độ 180 độ C trong khoảng 10-15 phút.
-Bước 3: Hoàn thành
-1. Xếp hải sản lên đĩa, rưới sốt bơ tỏi lên trên và thưởng thức.`,
-        product_id: 8,
-        complete_time: 40,
-      },
-      {
-        name: `Bước 1: Chuẩn bị phần bột mì
-1. Trộn bột mì với muối, thêm nước từ từ cho đến khi bột mịn.
-2. Cán bột mỏng ra, sau đó cắt thành các miếng vuông hoặc tròn.
-Bước 2: Làm nhân bánh
-1. Trộn thịt xay với gia vị, thêm hành và tỏi băm nhỏ vào trộn đều.
-2. Đặt nhân vào giữa miếng bột rồi gập lại, dùng tay nặn chặt mép bánh.
-Bước 3: Nướng bánh
-1. Nướng bánh ở nhiệt độ 180 độ C trong khoảng 20 phút cho đến khi vỏ bánh vàng đều.
-Bước 4: Hoàn thành
-1. Lấy bánh ra ngoài, để nguội và thưởng thức.`,
-        product_id: 9,
-        complete_time: 60,
-      },
-      {
-        name: `Bước 1: Làm sốt cà chua
-1. Đun cà chua tươi hoặc xay nhuyễn cùng với hành tỏi, thêm gia vị như muối, đường và tiêu vào.
-2. Đun cho đến khi sốt sệt lại.
-Bước 2: Nướng bánh
-1. Lót vỏ bánh pizza vào khuôn, quét một lớp dầu oliu.
-2. Đổ sốt cà chua lên vỏ bánh rồi rải phô mai và các nguyên liệu tùy thích lên trên.
-3. Nướng bánh ở nhiệt độ 230 độ C trong khoảng 15-20 phút cho đến khi phô mai tan chảy và bánh vàng đều.`,
-        product_id: 10,
-        complete_time: 80,
-      },
-      {
-        name: `Bước 1: Trộn Hỗn Hợp Bột
--	Đánh bơ và đường: Cho bơ, đường nâu và đường trắng vào tô, đánh đều cho đến khi hỗn hợp nhuyễn mịn và có màu nhạt.
--	Thêm trứng và vani: Cho trứng và tinh chất vani vào hỗn hợp bơ, tiếp tục đánh đều cho đến khi quyện lại.
--	Trộn bột: Trong một tô khác, rây bột mì, baking soda, và muối. Sau đó, từ từ thêm hỗn hợp bột khô vào hỗn hợp bơ và trộn đều.
--	Thêm chocolate chips và topping: Cho chocolate chips (và các loại hạt, nho khô, cranberry khô nếu dùng) vào hỗn hợp bột, trộn đều.
-Bước 2: Tạo Hình và Nướng Bánh
--	Làm nóng lò nướng: Làm nóng lò ở 175°C.
--	Tạo hình bánh: Dùng muỗng hoặc tay, múc hỗn hợp bột và nặn thành các viên nhỏ, đặt lên khay nướng có lót giấy nến, cách nhau khoảng 5cm để bánh có không gian nở.
--	Nướng bánh: Nướng bánh trong lò khoảng 10-12 phút hoặc cho đến khi rìa bánh có màu vàng nâu. Bánh sẽ hơi mềm khi mới lấy ra, nhưng sẽ cứng lại khi nguội.
-Bước 3: Làm Nguội 
-Sau khi nướng, để bánh trên khay khoảng 5 phút rồi chuyển ra rack để bánh nguội hoàn toàn.`,
-        product_id: 11,
-        complete_time: 40,
-      },
-      {
-        name: `ước 1: Nhào bột, nghỉ bột
-Trộn sữa tươi với nước cốt chanh, để lên men trong 10-15 phút
-Hòa tan men với đường và nước ấm, để men nở trong 5-10 phút
-Thêm nửa lượng bột mì, đường, bơ đun chảy, sữa đã lên men, muối và 1 lòng đỏ trứng. Trộn đều
-Thêm nửa bột mì còn lại, nhào trong 10-15 phút cho bột mịn và đàn hồi. Ủ bột trong 1 giờ
-Bước 2: Cán bơ lạt, ủ bột lần 1
-Cán bơ lạt thành mỏng, để lạnh trong 30 phút. Cán bột mỏng và để vào ngăn mát tủ lạnh 15 phút
-Bước 3: Cán bột, gấp và ủ lần 2
-Cán mỏng bột, đặt bơ lạt vào một bên, gấp lại và ủ trong tủ lạnh 30 phút
-Bước 4: Cán bột, gấp và ủ lần 3
-Cán bột theo chiều dài, gấp đôi lại và ủ trong tủ lạnh thêm 30 phút. Lặp lại quá trình cán và ủ thêm 6-7 giờ
-Bước 5: Tạo hình bánh sừng trâu
-Cán mỏng bột, cắt thành 12 miếng tam giác, rồi cuộn lại và uốn cong hai đầu
-Bước 6: Nướng bánh Croissant
-Đặt bánh lên khay nướng, nướng ở 170°C trong 7 phút, giảm xuống 150°C và nướng thêm 8-13 phút. Tổng thời gian nướng từ 15-20 phút`,
-        product_id: 12,
-        complete_time: 540,
-      },
-      {
-        name: `Bước 1: Làm hỗn hợp lòng đỏ trứng
--	Cho bơ vào lò vi sóng từ 40 – 50 giây để bơ tan chảy hoàn toàn. Nếu không có lò vi sóng, bạn có thể làm tan chảy bơ bằng cách đun trong chảo.
--	Tách lòng đỏ và lòng trắng trứng gà ra hai âu riêng. Tiếp theo, đổ 55 gram được vào âu lòng đỏ, đánh thật đều tay rồi cho tiếp 100 gram bơ đã đun chảy vào, tiếp tục đánh lên để các nguyên liệu hòa quyện vào nhau thành một hỗn hợp đồng nhất.
-Bước 2: Làm hỗn hợp bột bánh Waffle
--	Cho lượng đường còn lại vào âu lòng trắng, đánh bông lên. Sau đó đổ hỗn hợp lòng trắng vào âu hỗn hợp lòng đỏ, trộn đều từ dưới lên trên đến khi hỗn hợp mịn màng, có màu vàng nhạt bắt mắt.
--	Rây bột qua một lần để bột thật mịn rồi cho vào hỗn hợp lòng đỏ cùng một chút muối và vani, trộn đều để hỗn hợp nhuyễn mịn và không bị vón cục.
-Bước 3:  Nướng
-Nướng trong khoảng 5 phút hoặc đợi bánh chuyển sang màu vàng nâu thì lấy ra khỏi khuôn. Dùng dao cắt bỏ phần thừa xung quanh, xếp bánh ra đĩa. Tiếp tục lặp lại thao tác nướng bánh đến khi hết phần bột đã chuẩn bị`,
-        product_id: 13,
-        complete_time: 30,
-      },
-      {
-        name: `Bước 1: Tạo phần nhân kem
-Đập trứng, tách lòng đỏ và đánh đều đến khi chuyển màu vàng nhạt. Rây bột ngô vào hỗn hợp trứng và trộn đều.
-Đun sữa ở nhiệt độ 45-50°C, sau đó cho từ từ vào hỗn hợp trứng, khuấy đều để tránh vón cục.
-Khi hỗn hợp hòa quyện, thêm vài giọt vani và đổ ra bát.
-Khi nhân kem nguội bớt, cho bơ cắt nhỏ vào trộn đều cho đến khi bơ tan hoàn toàn. Cất kem vào tủ lạnh để nhân kem nguội hoàn toàn
-Bước 2: Tiến hành làm phần bột bánh
--	Rây bột mì để loại bỏ cục bột.
--	Đun sữa, bơ, đường, muối và 80ml nước sạch trong nồi cho đến khi bơ tan chảy.
--	Nhấc nồi ra khỏi bếp, cho bột mì vào và trộn đều, sau đó đun thêm 1-2 phút cho đến khi bột không còn dính vào nồi.
--	Cho trứng vào từ từ, vừa cho trứng vừa trộn đều bằng phới đánh trứng. Bột sẽ có dạng hơi lỏng, mùi thơm và màu vàng đẹp.
-Bước 3: Thực hiện tạo hình cho bánh Eclair
--	Bột bánh Eclair khá mềm và có phần hơi lỏng nên không thể tạo hình bằng cách nặn hay sử dụng luôn bánh sẵn có. Cách làm bánh Eclair chuẩn Pháp từ hương vị cho đến hình dáng thì bánh sẽ có hình thuôn dài nhỏ nhắn.
+  const recipeData = [
+    {
+      id: 1,
+      name: 'Công thức Pizza hải sản',
+      product_id: 1,
+      complete_time: 180,
+    },
+    {
+      id: 2,
+      name: 'Công thức Bánh tag trứng',
+      product_id: 2,
+      complete_time: 120,
+    },
+    { id: 3, name: 'Công thức Bánh muffin', product_id: 3, complete_time: 70 },
+    {
+      id: 4,
+      name: 'Công thức Bánh bông lan trứng muối',
+      product_id: 4,
+      complete_time: 75,
+    },
+    {
+      id: 5,
+      name: 'Công thức Bánh brownies',
+      product_id: 5,
+      complete_time: 75,
+    },
+    { id: 6, name: 'Công thức Bánh chuối', product_id: 6, complete_time: 120 },
+    { id: 7, name: 'Công thức Bánh su kem', product_id: 7, complete_time: 80 },
+    { id: 8, name: 'Công thức Bánh cupcake', product_id: 8, complete_time: 50 },
+    { id: 9, name: 'Công thức Bánh táo', product_id: 9, complete_time: 65 },
+    {
+      id: 10,
+      name: 'Công thức Bánh macaron',
+      product_id: 10,
+      complete_time: 100,
+    },
+    {
+      id: 11,
+      name: 'Công thức Bánh cookies',
+      product_id: 11,
+      complete_time: 40,
+    },
+    {
+      id: 12,
+      name: 'Công thức Bánh sừng bò',
+      product_id: 12,
+      complete_time: 540,
+    },
+    {
+      id: 13,
+      name: 'Công thức Bánh waffle',
+      product_id: 13,
+      complete_time: 30,
+    },
+    {
+      id: 14,
+      name: 'Công thức Bánh eclair',
+      product_id: 14,
+      complete_time: 45,
+    },
+    {
+      id: 15,
+      name: 'Công thức Bánh donut',
+      product_id: 15,
+      complete_time: 900,
+    },
+  ];
 
--	Cho phần kem đã làm vào túi bắt kem, rồi tiến hành bắt từng dải bột dài tầm 10cm lên khay nướng. Hãy lớp một lớp giấy nến xuống dưới khay nếu không muốn bánh bị dính lên khay.
-Bước 4: Nướng bánh Eclair 
--	Đầu tiên, hãy làm nóng lò ở 200 độ C trong 10 phút trước khi cho bánh vào nướng để bánh chín đều và giòn hơn.
--	Cho khay bánh vào tiến hành nướng trong 20 phút`,
-        product_id: 14,
-        complete_time: 45,
-      },
-      {
-        name: `Bước 1: Trộn các nguyên liệu ướt
-Trộn đều hỗn hợp gồm 200ml sữa tươi không đường, 170g bơ lạt, 80ml mật ong, 4 quả trứng, 1 muỗng tinh chất vani lại với nhau.
-Bước 2: Ủ bột lên men
--	Trộn đều tất cả bột mì với muối rồi cho gói men vào và tiếp tục trộn đều( chỉ trộn 1 chiều để nếu không con men sẽ chết)
--	Đổ hỗn hợp ướt vào và khuấy đều.
--	Bọc kín tô hỗn hợp lại và ủ 2-3 tiếng. Sau đó bỏ vào ngăn mát tủ lạnh và ủ thêm 12 tiếng.
-Bước 3: Cán bột và tạo hình 
--	Cho bột rà bàn, phủ lên mặt bột 1 lớp bột mì và cán mỏng với độ dày khoảng 1cm.
--	Sau đó bạn dùng một khuôn hình tròn cắt bột, rồi dùng tiếp khuôn tròn nhỏ hơn ấn vào giữa miếng bột.
--	Chuẩn bị khay nướng có lót giấy lên trên, xếp bánh lên lấy vải che lại ủ khoảng 20-30 phút.
-Bước 4: Nướng bánh
-Làm nóng là nướng tới nhiệt độ 180 độ C.
-Quét 1 lớp bơ lên mặt bánh sau đó cho vào lò nướng tầm 15 phút.
-Bước 5: Trang trí bánh
--	Đun chảy chocolate trắng, đen đã chuẩn bị.
--	Tranh thủ lúc bánh còn nóng nhúng vào hỗn hợp chocolate trắng hoặc đen.`,
-        product_id: 15,
-        complete_time: 900,
-      },
-    ],
+  await prisma.recipe.createMany({
+    //     data: [
+    //       {
+    //         name: `Bước 1: Làm sốt cà chua
+    // 1. Luộc cà chua trong 5 phút sau đó lột vỏ, băm nhỏ hành tây tỏi,
+    // 2. Phi hành tỏi, cho cà chua, đường muối, tương cà rồi khuấy đều cho đến khi sệt lại trong khoảng 10p
+    // Bước 2: Làm đế pizza
+    // 1. Cho nước, men, mật ong, dầu oliu, rây hết bột mì và nhào tất cả, ủ trong 2 tiếng
+    // 2. Nặn thành hình tròn bán kính 9, 7, 12 tương đương nhỏ vừa lớn
+    // Bước 3: Cho đế vào lò nướng nhiệt độ 230 -250, quét sốt cà chua và cho tất cả nhân vào và nướng trong 10p`,
+    //         product_id: 1,
+    //         complete_time: 180,
+    //       },
+    //       {
+    //         name: `Bước 1: Làm phần vỏ bánh
+    // 1. Cho bột mì, bơ thực vật nhào mịn và để trong ngăn đá tủ lạnh khoảng 15 phút. Cho nốt chỗ bột mì còn lại vào trộn đều cùng đường, lòng đỏ trứng gà và 150ml nước.
+    // 2. Nhào bột thật mịn rồi cán mỏng miếng bột thành hình chữ nhật, lấy phần bột trong tủ lạnh cho vào chính giữa miếng bột, cán nhẹ nhàng. Gấp bột làm 3 rồi bọc màng bọc thực phẩm cho vào ngăn đá 15 phút.
+    // 3. Bột sau khi đã nghỉ khoảng 15 phút trong tủ lạnh, đem cán mỏng rồi gấp lại làm 3, cho vào ngăn đá tủ lạnh 15 phút. Lặp đi lặp lại khoảng 4-5 lần để được lớp vỏ bánh nhiều lớp rất đẹp.
+    // 4. Lần cán bột cuối cùng bạn chỉ làm mỏng khoảng 3mm rồi dùng khuôn cắt tạo thành những miếng tròn và lót bột vào khuôn nướng.
+    // Bước 2: Làm nhân bánh
+    // 1. Cho sữa đặc và sữa tươi không đường khuấy đều cho sữa đặc tan rồi cho vào lò vi sóng quay trong khoảng 3 phút.
+    // 2. Đánh tan trứng, cho thêm một chút vani đánh cùng cho thơm, đổ trứng vào bát sữa nóng, khuấy nhanh và đều tay.
+    // Bước 3: Nướng bánh
+    // 1. Bật lò nướng ở nhiệt độ 200 độ C trong khoảng 10 phút cho lò nóng đều. Từ từ rót phần nhân trứng sữa vào từng khuôn bánh rồi đặt khay vào lò nướng.
+    // 2. Nướng bánh khoảng 20 phút khi thấy vỏ bánh chín vàng đều. Cuối cùng lấy bánh bày ra đĩa và trang trí.`,
+    //         product_id: 2,
+    //         complete_time: 120,
+    //       },
+    //       {
+    //         name: `1. Bật nóng lò nướng. Cho khay thiếc muffin có lót sẵn cốc giấy vào
+    // 2. Bơ nhạt đun cách thủy cho tan chảy, để nguội.
+    // 3. Rây bột mì, bột nở, muối vào chung một bát. Trộn đều chúng.
+    // 4. Đập trứng gà, sữa tươi, vani, dầu ăn vào chung một bát. Đánh cho tan đều.
+    // 5. Thêm từ từ bơ đã nguội vào hỗn hợp. Trộn đều cho hòa quyện.
+    // 6. Thêm từ từ bột khô vào hỗn hợp ướt. Lúc này, thêm nho khô vào trộn đều nhé.
+    // Chia bột vào từng khuôn. Đem nướng ở 180 độ trong 20 phút`,
+    //         product_id: 3,
+    //         complete_time: 70,
+    //       },
+    //       {
+    //         name: `Bước 1: Làm sốt kem
+    // 1. Đun sữa tươi với bơ cho tan, tiếp theo cho đường vào khuấy đều.
+    // 2. Đun nhỏ lửa, thêm vanilla rồi khuấy đều cho đến khi sốt sệt lại.
+    // Bước 2: Làm vỏ bánh
+    // 1. Trộn bột mì với bột nở và đường, thêm bơ vào trộn đều cho bột có dạng hạt vụn.
+    // 2. Thêm sữa vào từ từ, trộn đều cho đến khi bột trở nên mềm mịn.
+    // Bước 3: Nướng bánh
+    // 1. Dùng khuôn bánh tart để nặn bột vào khuôn.
+    // 2. Nướng ở nhiệt độ 180 độ C trong khoảng 15-20 phút cho đến khi vỏ bánh vàng đều.
+    // Bước 4: Hoàn thành
+    // 1. Đổ sốt kem vào trong vỏ bánh và trang trí với trái cây tươi.`,
+    //         product_id: 4,
+    //         complete_time: 90,
+    //       },
+    //       {
+    //         name: `Bước 1: Làm vỏ bánh
+    // 1. Trộn bột mì, đường, bột nở vào một bát lớn, sau đó thêm bơ vào và nhào cho đến khi bột thành một khối đồng nhất.
+    // 2. Dùng tay ấn bột thành hình tròn rồi cho vào khuôn, tạo thành lớp vỏ mỏng đều.
+    // Bước 2: Làm nhân bánh
+    // 1. Trộn kem phô mai, đường và trứng cho đến khi hỗn hợp mịn.
+    // 2. Cho hỗn hợp vào trong khuôn đã lót vỏ bánh.
+    // Bước 3: Nướng bánh
+    // 1. Đặt bánh vào lò nướng ở nhiệt độ 180 độ C trong khoảng 25-30 phút.
+    // 2. Sau khi bánh chín, để nguội trong khuôn rồi bỏ ra đĩa và thưởng thức.`,
+    //         product_id: 5,
+    //         complete_time: 70,
+    //       },
+    //       {
+    //         name: `Bước 1: Làm phần vỏ bánh
+    // 1. Trộn bột mì, muối, bơ và nước vào một bát lớn để tạo thành khối bột mềm mịn.
+    // 2. Lăn bột thành một miếng dày khoảng 1 cm rồi dùng khuôn cắt thành các miếng hình vuông nhỏ.
+    // Bước 2: Làm nhân bánh
+    // 1. Trộn hạt dẻ, bột cacao và đường vào một bát khác.
+    // 2. Đổ nhân vào mỗi miếng bột đã cắt sẵn, gập đôi và ép mép lại cho chắc.
+    // Bước 3: Nướng bánh
+    // 1. Đặt các miếng bánh vào khay nướng, nướng ở nhiệt độ 180 độ C trong 15 phút cho đến khi vỏ bánh vàng giòn.
+    // Bước 4: Hoàn thành
+    // 1. Lấy bánh ra ngoài, để nguội và thưởng thức.`,
+    //         product_id: 6,
+    //         complete_time: 50,
+    //       },
+    //       {
+    //         name: `Bước 1: Làm phần vỏ bánh
+    // 1. Trộn bột mì, đường, bơ và muối vào một bát.
+    // 2. Thêm nước lạnh vào, nhào bột thành khối dẻo, bọc kín và để trong tủ lạnh 30 phút.
+    // Bước 2: Làm nhân bánh
+    // 1. Đánh trứng với sữa tươi và đường cho đến khi hỗn hợp mịn.
+    // 2. Thêm vani và hạt nhục đậu khấu vào trộn đều.
+    // Bước 3: Nướng bánh
+    // 1. Đổ nhân vào phần vỏ bánh đã lót khuôn.
+    // 2. Nướng ở nhiệt độ 180 độ C trong khoảng 30-40 phút cho đến khi phần nhân hơi vàng và vỏ bánh giòn.`,
+    //         product_id: 7,
+    //         complete_time: 90,
+    //       },
+    //       {
+    //         name: `Bước 1: Làm sốt bơ tỏi
+    // 1. Đun bơ trong một chảo lớn, thêm tỏi vào phi thơm.
+    // 2. Cho gia vị như muối, tiêu, chanh vào đảo đều, để sốt sệt lại.
+    // Bước 2: Nướng hải sản
+    // 1. Nguyên liệu hải sản (tôm, mực) rửa sạch, chẻ nhỏ.
+    // 2. Nướng trên vỉ nướng hoặc lò vi sóng ở nhiệt độ 180 độ C trong khoảng 10-15 phút.
+    // Bước 3: Hoàn thành
+    // 1. Xếp hải sản lên đĩa, rưới sốt bơ tỏi lên trên và thưởng thức.`,
+    //         product_id: 8,
+    //         complete_time: 40,
+    //       },
+    //       {
+    //         name: `Bước 1: Chuẩn bị phần bột mì
+    // 1. Trộn bột mì với muối, thêm nước từ từ cho đến khi bột mịn.
+    // 2. Cán bột mỏng ra, sau đó cắt thành các miếng vuông hoặc tròn.
+    // Bước 2: Làm nhân bánh
+    // 1. Trộn thịt xay với gia vị, thêm hành và tỏi băm nhỏ vào trộn đều.
+    // 2. Đặt nhân vào giữa miếng bột rồi gập lại, dùng tay nặn chặt mép bánh.
+    // Bước 3: Nướng bánh
+    // 1. Nướng bánh ở nhiệt độ 180 độ C trong khoảng 20 phút cho đến khi vỏ bánh vàng đều.
+    // Bước 4: Hoàn thành
+    // 1. Lấy bánh ra ngoài, để nguội và thưởng thức.`,
+    //         product_id: 9,
+    //         complete_time: 60,
+    //       },
+    //       {
+    //         name: `Bước 1: Làm sốt cà chua
+    // 1. Đun cà chua tươi hoặc xay nhuyễn cùng với hành tỏi, thêm gia vị như muối, đường và tiêu vào.
+    // 2. Đun cho đến khi sốt sệt lại.
+    // Bước 2: Nướng bánh
+    // 1. Lót vỏ bánh pizza vào khuôn, quét một lớp dầu oliu.
+    // 2. Đổ sốt cà chua lên vỏ bánh rồi rải phô mai và các nguyên liệu tùy thích lên trên.
+    // 3. Nướng bánh ở nhiệt độ 230 độ C trong khoảng 15-20 phút cho đến khi phô mai tan chảy và bánh vàng đều.`,
+    //         product_id: 10,
+    //         complete_time: 80,
+    //       },
+    //       {
+    //         name: `Bước 1: Trộn Hỗn Hợp Bột
+    // -	Đánh bơ và đường: Cho bơ, đường nâu và đường trắng vào tô, đánh đều cho đến khi hỗn hợp nhuyễn mịn và có màu nhạt.
+    // -	Thêm trứng và vani: Cho trứng và tinh chất vani vào hỗn hợp bơ, tiếp tục đánh đều cho đến khi quyện lại.
+    // -	Trộn bột: Trong một tô khác, rây bột mì, baking soda, và muối. Sau đó, từ từ thêm hỗn hợp bột khô vào hỗn hợp bơ và trộn đều.
+    // -	Thêm chocolate chips và topping: Cho chocolate chips (và các loại hạt, nho khô, cranberry khô nếu dùng) vào hỗn hợp bột, trộn đều.
+    // Bước 2: Tạo Hình và Nướng Bánh
+    // -	Làm nóng lò nướng: Làm nóng lò ở 175°C.
+    // -	Tạo hình bánh: Dùng muỗng hoặc tay, múc hỗn hợp bột và nặn thành các viên nhỏ, đặt lên khay nướng có lót giấy nến, cách nhau khoảng 5cm để bánh có không gian nở.
+    // -	Nướng bánh: Nướng bánh trong lò khoảng 10-12 phút hoặc cho đến khi rìa bánh có màu vàng nâu. Bánh sẽ hơi mềm khi mới lấy ra, nhưng sẽ cứng lại khi nguội.
+    // Bước 3: Làm Nguội
+    // Sau khi nướng, để bánh trên khay khoảng 5 phút rồi chuyển ra rack để bánh nguội hoàn toàn.`,
+    //         product_id: 11,
+    //         complete_time: 40,
+    //       },
+    //       {
+    //         name: `ước 1: Nhào bột, nghỉ bột
+    // Trộn sữa tươi với nước cốt chanh, để lên men trong 10-15 phút
+    // Hòa tan men với đường và nước ấm, để men nở trong 5-10 phút
+    // Thêm nửa lượng bột mì, đường, bơ đun chảy, sữa đã lên men, muối và 1 lòng đỏ trứng. Trộn đều
+    // Thêm nửa bột mì còn lại, nhào trong 10-15 phút cho bột mịn và đàn hồi. Ủ bột trong 1 giờ
+    // Bước 2: Cán bơ lạt, ủ bột lần 1
+    // Cán bơ lạt thành mỏng, để lạnh trong 30 phút. Cán bột mỏng và để vào ngăn mát tủ lạnh 15 phút
+    // Bước 3: Cán bột, gấp và ủ lần 2
+    // Cán mỏng bột, đặt bơ lạt vào một bên, gấp lại và ủ trong tủ lạnh 30 phút
+    // Bước 4: Cán bột, gấp và ủ lần 3
+    // Cán bột theo chiều dài, gấp đôi lại và ủ trong tủ lạnh thêm 30 phút. Lặp lại quá trình cán và ủ thêm 6-7 giờ
+    // Bước 5: Tạo hình bánh sừng trâu
+    // Cán mỏng bột, cắt thành 12 miếng tam giác, rồi cuộn lại và uốn cong hai đầu
+    // Bước 6: Nướng bánh Croissant
+    // Đặt bánh lên khay nướng, nướng ở 170°C trong 7 phút, giảm xuống 150°C và nướng thêm 8-13 phút. Tổng thời gian nướng từ 15-20 phút`,
+    //         product_id: 12,
+    //         complete_time: 540,
+    //       },
+    //       {
+    //         name: `Bước 1: Làm hỗn hợp lòng đỏ trứng
+    // -	Cho bơ vào lò vi sóng từ 40 – 50 giây để bơ tan chảy hoàn toàn. Nếu không có lò vi sóng, bạn có thể làm tan chảy bơ bằng cách đun trong chảo.
+    // -	Tách lòng đỏ và lòng trắng trứng gà ra hai âu riêng. Tiếp theo, đổ 55 gram được vào âu lòng đỏ, đánh thật đều tay rồi cho tiếp 100 gram bơ đã đun chảy vào, tiếp tục đánh lên để các nguyên liệu hòa quyện vào nhau thành một hỗn hợp đồng nhất.
+    // Bước 2: Làm hỗn hợp bột bánh Waffle
+    // -	Cho lượng đường còn lại vào âu lòng trắng, đánh bông lên. Sau đó đổ hỗn hợp lòng trắng vào âu hỗn hợp lòng đỏ, trộn đều từ dưới lên trên đến khi hỗn hợp mịn màng, có màu vàng nhạt bắt mắt.
+    // -	Rây bột qua một lần để bột thật mịn rồi cho vào hỗn hợp lòng đỏ cùng một chút muối và vani, trộn đều để hỗn hợp nhuyễn mịn và không bị vón cục.
+    // Bước 3:  Nướng
+    // Nướng trong khoảng 5 phút hoặc đợi bánh chuyển sang màu vàng nâu thì lấy ra khỏi khuôn. Dùng dao cắt bỏ phần thừa xung quanh, xếp bánh ra đĩa. Tiếp tục lặp lại thao tác nướng bánh đến khi hết phần bột đã chuẩn bị`,
+    //         product_id: 13,
+    //         complete_time: 30,
+    //       },
+    //       {
+    //         name: `Bước 1: Tạo phần nhân kem
+    // Đập trứng, tách lòng đỏ và đánh đều đến khi chuyển màu vàng nhạt. Rây bột ngô vào hỗn hợp trứng và trộn đều.
+    // Đun sữa ở nhiệt độ 45-50°C, sau đó cho từ từ vào hỗn hợp trứng, khuấy đều để tránh vón cục.
+    // Khi hỗn hợp hòa quyện, thêm vài giọt vani và đổ ra bát.
+    // Khi nhân kem nguội bớt, cho bơ cắt nhỏ vào trộn đều cho đến khi bơ tan hoàn toàn. Cất kem vào tủ lạnh để nhân kem nguội hoàn toàn
+    // Bước 2: Tiến hành làm phần bột bánh
+    // -	Rây bột mì để loại bỏ cục bột.
+    // -	Đun sữa, bơ, đường, muối và 80ml nước sạch trong nồi cho đến khi bơ tan chảy.
+    // -	Nhấc nồi ra khỏi bếp, cho bột mì vào và trộn đều, sau đó đun thêm 1-2 phút cho đến khi bột không còn dính vào nồi.
+    // -	Cho trứng vào từ từ, vừa cho trứng vừa trộn đều bằng phới đánh trứng. Bột sẽ có dạng hơi lỏng, mùi thơm và màu vàng đẹp.
+    // Bước 3: Thực hiện tạo hình cho bánh Eclair
+    // -	Bột bánh Eclair khá mềm và có phần hơi lỏng nên không thể tạo hình bằng cách nặn hay sử dụng luôn bánh sẵn có. Cách làm bánh Eclair chuẩn Pháp từ hương vị cho đến hình dáng thì bánh sẽ có hình thuôn dài nhỏ nhắn.
+
+    // -	Cho phần kem đã làm vào túi bắt kem, rồi tiến hành bắt từng dải bột dài tầm 10cm lên khay nướng. Hãy lớp một lớp giấy nến xuống dưới khay nếu không muốn bánh bị dính lên khay.
+    // Bước 4: Nướng bánh Eclair
+    // -	Đầu tiên, hãy làm nóng lò ở 200 độ C trong 10 phút trước khi cho bánh vào nướng để bánh chín đều và giòn hơn.
+    // -	Cho khay bánh vào tiến hành nướng trong 20 phút`,
+    //         product_id: 14,
+    //         complete_time: 45,
+    //       },
+    //       {
+    //         name: `Bước 1: Trộn các nguyên liệu ướt
+    // Trộn đều hỗn hợp gồm 200ml sữa tươi không đường, 170g bơ lạt, 80ml mật ong, 4 quả trứng, 1 muỗng tinh chất vani lại với nhau.
+    // Bước 2: Ủ bột lên men
+    // -	Trộn đều tất cả bột mì với muối rồi cho gói men vào và tiếp tục trộn đều( chỉ trộn 1 chiều để nếu không con men sẽ chết)
+    // -	Đổ hỗn hợp ướt vào và khuấy đều.
+    // -	Bọc kín tô hỗn hợp lại và ủ 2-3 tiếng. Sau đó bỏ vào ngăn mát tủ lạnh và ủ thêm 12 tiếng.
+    // Bước 3: Cán bột và tạo hình
+    // -	Cho bột rà bàn, phủ lên mặt bột 1 lớp bột mì và cán mỏng với độ dày khoảng 1cm.
+    // -	Sau đó bạn dùng một khuôn hình tròn cắt bột, rồi dùng tiếp khuôn tròn nhỏ hơn ấn vào giữa miếng bột.
+    // -	Chuẩn bị khay nướng có lót giấy lên trên, xếp bánh lên lấy vải che lại ủ khoảng 20-30 phút.
+    // Bước 4: Nướng bánh
+    // Làm nóng là nướng tới nhiệt độ 180 độ C.
+    // Quét 1 lớp bơ lên mặt bánh sau đó cho vào lò nướng tầm 15 phút.
+    // Bước 5: Trang trí bánh
+    // -	Đun chảy chocolate trắng, đen đã chuẩn bị.
+    // -	Tranh thủ lúc bánh còn nóng nhúng vào hỗn hợp chocolate trắng hoặc đen.`,
+    //         product_id: 15,
+    //         complete_time: 900,
+    //       },
+    //     ],
+    data: recipeData,
     skipDuplicates: true,
   });
   const existingWarehouses = await prisma.wareHouse.findMany({
