@@ -37,7 +37,7 @@ All information of database is inside docker-compose.yml
  npx prisma migrate dev
 ```
 
-- Seed the database (optional, contains dummy data from `prisma/seed.ts`):
+- Seed the database:
 
 ```bash
  npm run prisma:seed
