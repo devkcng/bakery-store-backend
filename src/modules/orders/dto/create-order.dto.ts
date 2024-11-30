@@ -1,4 +1,4 @@
-import { IsInt, IsEnum, IsNumber } from 'class-validator';
+import { IsEnum, IsNumber } from 'class-validator';
 import { OrderStatus } from '@prisma/client';
 
 export class CreateOrderDto {
@@ -10,7 +10,4 @@ export class CreateOrderDto {
       'order_status must be either COMPLETED, PENDING, PROCESSING, CANCELED, or DELIVERED',
   })
   order_status: OrderStatus;
-
-  @IsInt({ message: 'user_id must be an integer' })
-  user_id: number;
 }
