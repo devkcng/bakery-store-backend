@@ -73,7 +73,7 @@ VALUES
     1,
     30000,
     'Bánh tag trứng thơm ngon',
-    '/imgs/bakery-images/eggtagb.png',
+    '/imgs/bakery-images/eggtartb.png',
     50,
     12
   ),
