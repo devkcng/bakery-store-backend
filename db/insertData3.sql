@@ -1,4 +1,4 @@
-INSERT INTO Oven (oven_product_capacity_id, status, current_capacity_used, current_baking_type, start_time, time_remaining) VALUES
+INSERT INTO "Oven" (oven_product_capacity_id, status, current_capacity_used, current_baking_type, start_time, time_remaining) VALUES
     (1, 'AVAILABLE', 0, NULL, NULL, NULL),
     (2, 'IN_USE', 2, 'bread', '2024-11-14 09:00:00', 30),
     (3, 'AVAILABLE', 0, NULL, NULL, NULL),
@@ -20,7 +20,7 @@ INSERT INTO "OrderDetail" (order_id, product_id, product_quantity) VALUES
   (9, 4, 10),
   (10, 4, 10),
 
-INSERT INTO OrderDetailProcess (oven_id, order_detail_id, processing_status, order_quantity, processing_quantity, processed_quantity) VALUES
+INSERT INTO "OrderDetailProcess" (oven_id, order_detail_id, processing_status, order_quantity, processing_quantity, processed_quantity) VALUES
     (1, 3, 'WAITING', 5, 0, 0),
     (2, 2, 'IN_PROGRESS', 8, 4, 3),
     (3, 5, 'COMPLETED', 7, 7, 7),
@@ -33,7 +33,7 @@ INSERT INTO OrderDetailProcess (oven_id, order_detail_id, processing_status, ord
     (3, 10, 'WAITING', 2, 0, 0);
 
 -- Insert sample data into OrderProductTopping table
-INSERT INTO OrderProductTopping (order_detail_id, topping_id, quantity) VALUES
+INSERT INTO "OrderProductTopping" (order_detail_id, topping_id, quantity) VALUES
     (1, 5, 2),
     (2, 12, 1),
     (3, 8, 3),

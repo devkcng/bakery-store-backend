@@ -233,9 +233,9 @@ Bước 5: Trang trí bánh
 -	Đun chảy chocolate trắng, đen đã chuẩn bị.
 -	Tranh thủ lúc bánh còn nóng nhúng vào hỗn hợp chocolate trắng hoặc đen.', 
  15, 900);
--- Tạo dữ liệu cho bảng RecipeDetail
+-- Tạo dữ liệu cho bảng "RecipeDetail"
 -- Bánh pizza
-INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (1, 400, 1),     -- 400g Bột mì
   (9, 200, 1),     -- 200g Men
   (34, 10, 1),     -- 10g Phô mai (assuming phô mai has warehouse_id 31)
@@ -252,7 +252,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (33, 90, 1),     -- 90ml Tương cà ketchup (same warehouse_id as tương cà)
   (24, 1, 1);      -- 1g Muối
 -- Bánh egg tag
- INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+ INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (1, 400, 2),     -- 400g Bột mì đa dụng
   (4, 200, 2),     -- 200g Bơ thực vật loại hơi mặn
   (6, 2, 2),       -- 2 lòng đỏ Trứng gà 
@@ -263,7 +263,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (2, 10, 2);      -- 10g Đường
 
 -- Bánh muffin
-INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (1, 300, 3),      -- 300g Bột mì đa dụng
   (7, 10, 3),       -- 10g Bột nở
   (23, 10, 3),      -- 10g Chiết xuất vani
@@ -274,7 +274,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (24, 1, 3),       -- 1 nhúm Muối tinh (1g for approximation)
   (15, 10, 3);      -- 10g Nho khô
 -- Pizza bông lan
-INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (6, 12, 4),       -- 12 quả Trứng muối
   (6, 3, 4),        -- 3 quả Trứng gà
   (1, 50, 4),       -- 50g Bột mì đa dụng
@@ -288,7 +288,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (24, 0.5, 4),     -- ½ muỗng cà phê Muối (0.5g approximation)
   (26, 0.5, 4);     -- ½ miếng Chanh (assuming 0.5g or adjust as needed
 -- Pizza bronies
-  INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+  INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (1, 75, 5),       -- 75g Bột mì đa dụng
   (8, 150, 5),      -- 150g Bơ lạt (unsalted butter)
   (11, 250, 5),     -- 250g Socola đen
@@ -299,7 +299,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (23, 5, 5),       -- 5g Tinh chất vani
   (24, 2, 5);       -- 2g Muối
 -- bánh Chuối
-  INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+  INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (14, 900, 6),    -- 900g Chuối
   (1, 300, 6),     -- 300g Bột mì số 11
   (6, 135, 6),     -- 135g Trứng gà 
@@ -311,7 +311,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (25, 50, 6),     -- 50g Dầu ăn
   (18, 5, 6);      -- 5g Baking soda
 -- bánh sukem
-  INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+  INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (3, 200, 7),     -- 200ml Sữa tươi
   (1, 100, 7),     -- 100g Bột mì đa dụng
   (8, 90, 7),      -- 90g Bơ lạt
@@ -323,7 +323,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (24, 0.5, 7);    -- 1 chút Muối (0.5g as an approximation)
 
   --bánh cupcake
-  INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+  INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (1, 80, 8),       -- 80g Bột mì đa dụng
   (7, 3.3, 8),      -- ⅔ thìa cà phê Bột nở
   (3, 60, 8),       -- 60ml Sữa tươi không đường
@@ -334,7 +334,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (2, 50, 8),       -- 50g Đường trắng
   (23, 5, 8);       -- 1 thìa cà phê Vani (approx. 5g)
 -- bánh táo
-  INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+  INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (20, 100, 9),      -- 3 quả Táo tươi 
   (1, 220, 9),     -- 220g Bột mì số  
   (18, 4.5, 9),    -- 4.5g Bột baking powder
@@ -345,7 +345,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (2, 90, 9),      -- 90g Đường nâu
   (23, 5, 9);      -- Tinh chất vani (approx. 5g)
 -- bánh macaron
-INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (17, 120, 10),    -- 120g Bột hạnh nhân
   (2, 200, 10),     -- 200g Đường bột
   (6, 90, 10),      -- 90g Lòng trắng trứng (approx. 3 eggs)
@@ -354,7 +354,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (30, 0, 10),      -- Màu thực phẩm (typically, you would have a custom entry for this)
   (22, 150, 10);    -- 150g Kem tươi (whipping cream)
 -- bánh cookies
-INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (1, 200, 11),     -- 200g Bột mì đa dụng
   (8, 115, 11),     -- 115g Bơ lạt
   (6, 1, 11),       -- 1 quả Trứng gà
@@ -368,7 +368,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (24, 1.5, 11),    -- 1.5g Muối
   (23, 5, 11);      -- 5g Tinh chất vani
 -- bánh sừng bò
-INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (9, 13.5, 12),    -- 13.5g Men nở khô
   (3, 500, 12),     -- 500ml Sữa tươi
   (8, 56, 12),      -- 56g Bơ đun chảy
@@ -380,7 +380,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (24, 10, 12),     -- 10g Muối
   (2, 50, 12);      -- 50g Đường trắng
 -- bánh waffle
-INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (1, 140, 13),     -- 140g Bột làm bánh 
   (6, 3, 13),       -- 3 quả Trứng gà
   (8, 120, 13),     -- 120g Bơ
@@ -389,7 +389,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (2, 110, 13),     -- 110g Đường cát trắng
   (2, 5, 13);       -- 5g Đường bột
 -- bánh eclair
-  INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+  INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (1, 100, 14),     -- 100g Bột mì
   (8, 70, 14),      -- 70g Bơ lạt
   (3, 280, 14),     -- 280ml Sữa tươi
@@ -400,7 +400,7 @@ INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
   (24, 0.5, 14),    -- 0.5g Muối
   (23, 2, 14);      -- 2g Hương vị vani
 -- bánh donut
-INSERT INTO RecipeDetail (warehouse_id, quantity, recipe_id) VALUES
+INSERT INTO "RecipeDetail" (warehouse_id, quantity, recipe_id) VALUES
   (1, 530, 15),     -- 530g Bột mì
   (12, 40, 15),     -- 40g Bột cacao
   (8, 170, 15),     -- 170g Bơ lạt
