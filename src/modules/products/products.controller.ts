@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
@@ -25,6 +26,10 @@ export class ProductsController {
     return this.productsService.findAll();
   }
 
+  @Get('category')
+  findByCat(@Query('category_id') category_id: string) {
+    return this.productsService.findByCat(+category_id); // Tìm sản phẩm theo category_id
+  }
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productsService.findOne(+id);

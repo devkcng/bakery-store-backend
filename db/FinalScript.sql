@@ -69,10 +69,10 @@ VALUES
   ),
   (
     2,
-    'Bánh tag trứng',
+    'Bánh tart trứng',
     1,
     30000,
-    'Bánh tag trứng thơm ngon',
+    'Bánh tart trứng thơm ngon',
     '/imgs/bakery-images/eggtartb.png',
     50,
     12
@@ -214,7 +214,7 @@ INSERT INTO
   "Recipe" (id, name, product_id, complete_time)
 VALUES
   (1, 'Công thức Pizza hải sản', 1, 180),
-  (2, 'Công thức Bánh tag trứng', 2, 120),
+  (2, 'Công thức Bánh tart trứng', 2, 120),
   (3, 'Công thức Bánh muffin', 3, 70),
   (4, 'Công thức Bánh bông lan trứng muối', 4, 75),
   (5, 'Công thức Bánh brownies', 5, 75),

@@ -61,10 +61,10 @@ async function main() {
         product_capacity_per_batch: 4,
       },
       {
-        name: 'Bánh tag trứng',
+        name: 'Bánh tart trứng',
         category_id: 1,
         price: 30000,
-        description: 'Bánh tag trứng thơm ngon',
+        description: 'Bánh tart trứng thơm ngon',
         img_path: '/imgs/bakery-images/eggtartb.png',
         max_daily_quantity_limit: 50,
         product_capacity_per_batch: 12,
@@ -199,7 +199,7 @@ async function main() {
     },
     {
       id: 2,
-      name: 'Công thức Bánh tag trứng',
+      name: 'Công thức Bánh tart trứng',
       product_id: 2,
       complete_time: 120,
     },
