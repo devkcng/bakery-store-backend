@@ -9,7 +9,7 @@ if [ -z "$DATABASE_URL" ]; then
 fi
 
 echo "Running Prisma migrations..."
-npx prisma migrate deploy
+npx prisma migrate dev
 
 echo "Seeding the database..."
 npm run prisma:seed

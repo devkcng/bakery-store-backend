@@ -18,8 +18,8 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - .:/usr/src/app               # Mount local directory for hot-reloading
-      - /usr/src/app/node_modules    # Persist container-installed dependencies
+      - .:/usr/src/app               
+      - /usr/src/app/node_modules    
     ports:
       - "8080:8080"
     environment:
