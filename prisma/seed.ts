@@ -6,6 +6,7 @@ async function main() {
   // Seed Categories
   await prisma.category.createMany({
     data: [{ name: 'Bánh ngọt' }, { name: 'Bánh mặn' }],
+    skipDuplicates: true,
   });
 
   // Seed WareHouse
@@ -45,6 +46,7 @@ async function main() {
       { name: 'Dầu oliu', quantity: 3.0, unit: 'kg' },
       { name: 'Phô mai', quantity: 3.0, unit: 'kg' },
     ],
+    skipDuplicates: true,
   });
   // Seed Products
   await prisma.product.createMany({
@@ -185,6 +187,7 @@ async function main() {
         product_capacity_per_batch: 5,
       },
     ],
+    skipDuplicates: true,
   });
 
   await prisma.recipe.createMany({
@@ -406,6 +409,7 @@ Bước 5: Trang trí bánh
         complete_time: 900,
       },
     ],
+    skipDuplicates: true,
   });
   const existingWarehouses = await prisma.wareHouse.findMany({
     select: { id: true },
@@ -559,6 +563,7 @@ Bước 5: Trang trí bánh
       { warehouse_id: 23, quantity: 5, recipe_id: 15 },
       { warehouse_id: 24, quantity: 1, recipe_id: 15 },
     ].filter((rd) => existingWarehouseIds.has(rd.warehouse_id)),
+    skipDuplicates: true,
   });
   await prisma.order.createMany({
     data: [
@@ -578,6 +583,7 @@ Bước 5: Trang trí bánh
         order_date: new Date(),
       },
     ],
+    skipDuplicates: true,
   });
   await prisma.orderDetail.createMany({
     data: [
@@ -597,6 +603,7 @@ Bước 5: Trang trí bánh
         product_quantity: 10,
       },
     ],
+    skipDuplicates: true,
   });
   await prisma.transaction.createMany({
     data: [
@@ -613,6 +620,7 @@ Bước 5: Trang trí bánh
         order_id: 2,
       },
     ],
+    skipDuplicates: true,
   });
   await prisma.topping.createMany({
     data: [
@@ -651,6 +659,7 @@ Bước 5: Trang trí bánh
       { name: 'Sốt socola', price: 5000 },
       { name: 'Mứt trái cây', price: 5000 },
     ],
+    skipDuplicates: true,
   });
   await prisma.productTopping.createMany({
     data: [
@@ -769,6 +778,7 @@ Bước 5: Trang trí bánh
       { product_id: 15, topping_id: 29 },
       { product_id: 15, topping_id: 34 },
     ],
+    skipDuplicates: true,
   });
 
   // const orderProductToppingData = [
@@ -864,6 +874,7 @@ Bước 5: Trang trí bánh
         time_remaining: null,
       },
     ],
+    skipDuplicates: true,
   });
 
   // const shippingInfoData = [
@@ -1232,6 +1243,7 @@ Bước 5: Trang trí bánh
 
   await prisma.userAccount.createMany({
     data: [],
+    skipDuplicates: true,
   });
 }
 
