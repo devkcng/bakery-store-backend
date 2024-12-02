@@ -105,6 +105,104 @@ export class ProductsService {
     return responseData;
   }
 
+  async findByCat(category_id: number) {
+    try {
+      if (isNaN(category_id) || category_id <= 0) {
+        throw new Error('Invalid Category ID');
+      }
+      const products = await this.prisma.product.findMany({
+        where: { category_id },
+        include: {
+          category: true, // Lấy thông tin của category
+          productToppings: {
+            include: {
+              topping: true, // Lấy topping thông qua quan hệ productToppings
+            },
+          },
+          recipes: true, // Lấy thông tin công thức liên quan (nếu có)
+          orderDetails: true, // Lấy thông tin chi tiết đơn hàng (nếu có)
+        },
+      });
+
+      // Chuyển đổi dữ liệu thành định dạng bạn muốn trả về (nếu cần)
+      const responseData = products.map((product) => ({
+        id: product.id,
+        name: product.name,
+        category_id: product.category_id,
+        price: product.price,
+        description: product.description,
+        img_path: product.img_path,
+        max_daily_quantity_limit: product.max_daily_quantity_limit,
+        product_capacity_per_batch: product.product_capacity_per_batch,
+        category: product.category,
+        toppings: product.productToppings.map((productTopping) => ({
+          id: productTopping.topping.id,
+          name: productTopping.topping.name,
+          price: productTopping.topping.price,
+        })),
+        recipes: product.recipes, // Nếu có thông tin recipes liên quan
+        orderDetails: product.orderDetails, // Nếu có thông tin orderDetails liên quan
+      }));
+
+      return { message: 'OK', products: responseData };
+    } catch (error) {
+      throw new Error(`Error: ${error.message}`);
+    }
+  }
+
+  async searchByName(keyword: string) {
+    try {
+      // Kiểm tra nếu keyword rỗng
+      if (!keyword || keyword.trim() === '') {
+        throw new Error('Keyword is required');
+      }
+
+      // Tìm kiếm sản phẩm theo tên gần giống với từ khóa (không phân biệt chữ hoa/chữ thường)
+      const products = await this.prisma.product.findMany({
+        where: {
+          name: {
+            contains: keyword, // Tìm kiếm những sản phẩm có tên chứa keyword
+            mode: 'insensitive', // Không phân biệt chữ hoa, chữ thường
+          },
+        },
+        include: {
+          category: true, // Lấy thông tin của category
+          productToppings: {
+            include: {
+              topping: true, // Lấy topping thông qua quan hệ productToppings
+            },
+          },
+          recipes: true, // Lấy thông tin công thức liên quan (nếu có)
+          orderDetails: true, // Lấy thông tin chi tiết đơn hàng (nếu có)
+        },
+      });
+
+      // Chuyển đổi dữ liệu thành định dạng bạn muốn trả về (nếu cần)
+      const responseData = products.map((product) => ({
+        id: product.id,
+        name: product.name,
+        category_id: product.category_id,
+        price: product.price,
+        description: product.description,
+        img_path: product.img_path,
+        max_daily_quantity_limit: product.max_daily_quantity_limit,
+        product_capacity_per_batch: product.product_capacity_per_batch,
+        category: product.category,
+        toppings: product.productToppings.map((productTopping) => ({
+          id: productTopping.topping.id,
+          name: productTopping.topping.name,
+          price: productTopping.topping.price,
+        })),
+        recipes: product.recipes, // Nếu có thông tin recipes liên quan
+        orderDetails: product.orderDetails, // Nếu có thông tin orderDetails liên quan
+      }));
+
+      return { message: 'OK', products: responseData };
+    } catch (error) {
+      throw new Error(`Error: ${error.message}`);
+    }
+  }
+
   async update(id: number, updateProductDto: UpdateProductDto) {
     return this.prisma.product.update({
       where: { id },
