@@ -30,6 +30,12 @@ export class ProductsController {
   findByCat(@Query('category_id') category_id: string) {
     return this.productsService.findByCat(+category_id); // Tìm sản phẩm theo category_id
   }
+
+  @Get('search')
+  search(@Query('keyword') keyword: string) {
+    return this.productsService.searchByName(keyword); // Tìm kiếm sản phẩm theo tên
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.productsService.findOne(+id);
