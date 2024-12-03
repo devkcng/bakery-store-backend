@@ -1,0 +1,60 @@
+name: CI for NestJS Project
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: admin
+          POSTGRES_PASSWORD: 123
+          POSTGRES_DB: nestjs_db
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U admin -d nestjs_db"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    env:
+      DATABASE_URL: postgresql://admin:123@localhost:5432/nestjs_db
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Run Prisma Migrations
+        run: npx prisma migrate dev
+
+      - name: Run Seeding database
+        run: npm run prisma:seed
+
+      - name: Run Tests
+        env:
+          DATABASE_URL: ${{ env.DATABASE_URL }}
+        run: npm run test
+
+      - name: Build Application
+        run: npm run build
