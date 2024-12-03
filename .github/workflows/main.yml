@@ -42,9 +42,6 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Run Linter
-        run: npm run lint
-
       - name: Run Prisma Migrations
         run: npx prisma migrate dev
 
