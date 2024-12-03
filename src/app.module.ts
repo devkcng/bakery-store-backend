@@ -16,6 +16,9 @@ import { OrderDetailProcessesModule } from './modules/order-detail-processes/ord
 import { OvensModule } from './modules/ovens/ovens.module';
 import { OrderProductToppingsModule } from './modules/order-product-toppings/order-product-toppings.module';
 import { PrismaModule } from './modules/prisma/prisma.module';
+import { PaypalModule } from './payments/paypal/paypal.module';
+import { VnpayModule } from './payments/vnpay/vnpay.module';
+import { PrismaService } from './modules/prisma/prisma.service';
 
 @Module({
   imports: [
@@ -34,8 +37,10 @@ import { PrismaModule } from './modules/prisma/prisma.module';
     OvensModule,
     OrderProductToppingsModule,
     PrismaModule,
+    PaypalModule,
+    VnpayModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, PrismaService],
 })
 export class AppModule {}

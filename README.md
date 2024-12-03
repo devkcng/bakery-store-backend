@@ -2,20 +2,74 @@
 
 This template is used for creating codebase of NestJS Backend project.
 
-## Workspace environment
+## Workspace environment for Docker users (No need to install NodeJS)
 
-Nodejs version requirement: 20.14.0
+- Install Docker and Docker Compose
 
-[Download NodeJS 20.14.0](https://nodejs.org/download/release/v20.14.0/)
+- Run the following command to start the project:
+
+```bash
+ docker-compose up --build -d
+```
+
+**`Note:`** If you have problem with permission of `entrypoint.sh`, please run the following command:
+
+```bash
+ sudo chmod +x entrypoint.sh
+```
+
+- Run the following command to watch the logs of app(the NestJs app):
+
+```bash
+ docker-compose logs -f app
+```
+
+- Run the following command to watch the logs of database(PostgreSQL):
+
+```bash
+ docker-compose logs -f db
+```
+
+- Run the following command to execute the command inside the app container:
+
+```bash
+ docker-compose exec app sh
+```
+
+- Run the following command to stop the project:
+
+```bash
+ docker-compose down -v
+```
+
+**`Note:`** If you have problem with `dist` or `node_modules`, please run the following command:
+
+- Remove `dist` folder:
+
+  ```bash
+  sudo rm -rf dist 
+  ```
+
+- Remove `node_modules` folder (if needed):
+
+  ```bash
+  sudo rm -rf node_modules
+  ```
+
+## Workspace environment for NodeJS users
+
+Nodejs version requirement: 20.18.1
+
+[Download NodeJS 20.18.1](https://nodejs.org/download/release/v20.18.1/)
 
 Fast installing use nvm:
 
 ```bash
- nvm install 20.14.0
- nvm use 20.14.0
+ nvm install 20.18.1
+ nvm use 20.18.1
 ```
 
-## Project setup
+### Project setup
 
 - Install dependencies:
 
@@ -25,9 +79,17 @@ Fast installing use nvm:
 
 - Create database (PostgreSQL):
 
-```bash
- docker-compose up -d
-```
+  - Cd to directory db:
+
+    ```bash
+     cd db
+    ```
+
+  - Run docker-compose:
+
+    ```bash
+    docker-compose up -d
+    ```
 
 All information of database is inside docker-compose.yml
 
@@ -37,13 +99,13 @@ All information of database is inside docker-compose.yml
  npx prisma migrate dev
 ```
 
-- Seed the database (optional, contains dummy data from `prisma/seed.ts`):
+- Seed the database:
 
 ```bash
- npm run seed
+ npm run prisma:seed
 ```
 
-## Compile and run the project
+### Compile and run the project
 
 ```bash
 # development
@@ -56,7 +118,21 @@ All information of database is inside docker-compose.yml
  npm run start:prod
 ```
 
-## Run tests
+- **`Note:`**
+  - Before running the project, make sure the database is running.
+  - If you have problem with dist folder, please run the following command:
+
+    ```bash
+    sudo rm -rf dist
+    ```
+
+  - If you have problem with node_modules folder, please run the following command:
+
+    ```bash
+    sudo rm -rf node_modules
+    ```
+
+### Run tests
 
 ```bash
 # unit tests
