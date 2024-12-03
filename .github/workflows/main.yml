@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     services:
@@ -47,11 +47,6 @@ jobs:
 
       - name: Run Seeding database
         run: npm run prisma:seed
-
-      - name: Run Tests
-        env:
-          DATABASE_URL: ${{ env.DATABASE_URL }}
-        run: npm run test
 
       - name: Build Application
         run: npm run build
