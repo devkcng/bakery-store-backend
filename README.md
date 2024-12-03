@@ -42,11 +42,19 @@ This template is used for creating codebase of NestJS Backend project.
  docker-compose down -v
 ```
 
-**`Note:`** If you have problem with `dist` and `node_modules`, please run the following command:
+**`Note:`** If you have problem with `dist` or `node_modules`, please run the following command:
 
-```bash
- sudo rm -rf dist node_modules
-```
+- Remove `dist` folder:
+
+  ```bash
+  sudo rm -rf dist 
+  ```
+
+- Remove `node_modules` folder (if needed):
+
+  ```bash
+  sudo rm -rf node_modules
+  ```
 
 ## Workspace environment for NodeJS users
 
