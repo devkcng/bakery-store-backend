@@ -126,6 +126,12 @@ All information of database is inside docker-compose.yml
     sudo rm -rf dist
     ```
 
+  - If you have problem with node_modules folder, please run the following command:
+
+    ```bash
+    sudo rm -rf node_modules
+    ```
+
 ### Run tests
 
 ```bash
