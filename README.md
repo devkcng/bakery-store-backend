@@ -24,23 +24,49 @@ This template is used for creating codebase of NestJS Backend project.
  docker-compose logs -f app
 ```
 
+- Run the following command to watch the logs of database(PostgreSQL):
+
+```bash
+ docker-compose logs -f db
+```
+
+- Run the following command to execute the command inside the app container:
+
+```bash
+ docker-compose exec app sh
+```
+
 - Run the following command to stop the project:
 
 ```bash
- docker-compose down 
+ docker-compose down -v
 ```
+
+**`Note:`** If you have problem with `dist` or `node_modules`, please run the following command:
+
+- Remove `dist` folder:
+
+  ```bash
+  sudo rm -rf dist 
+  ```
+
+- Remove `node_modules` folder (if needed):
+
+  ```bash
+  sudo rm -rf node_modules
+  ```
 
 ## Workspace environment for NodeJS users
 
-Nodejs version requirement: 20.14.0
+Nodejs version requirement: 20.18.1
 
-[Download NodeJS 20.14.0](https://nodejs.org/download/release/v20.14.0/)
+[Download NodeJS 20.18.1](https://nodejs.org/download/release/v20.18.1/)
 
 Fast installing use nvm:
 
 ```bash
- nvm install 20.14.0
- nvm use 20.14.0
+ nvm install 20.18.1
+ nvm use 20.18.1
 ```
 
 ### Project setup
@@ -98,6 +124,12 @@ All information of database is inside docker-compose.yml
 
     ```bash
     sudo rm -rf dist
+    ```
+
+  - If you have problem with node_modules folder, please run the following command:
+
+    ```bash
+    sudo rm -rf node_modules
     ```
 
 ### Run tests

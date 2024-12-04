@@ -11,7 +11,7 @@ async function bootstrap() {
   // Cấu hình CORS
   app.enableCors({
     credentials: true,
-    origin: 'http://localhost:3000', // Cho phép chỉ domain này truy cập vào API
+    origin: process.env.FRONTEND_URL ?? 'http://localhost:3000', // Cho phép chỉ domain này truy cập vào API
     methods: 'GET,POST,PUT,DELETE', // Các phương thức HTTP được phép
     allowedHeaders: 'Content-Type, Accept', // Các header được phép
   });
