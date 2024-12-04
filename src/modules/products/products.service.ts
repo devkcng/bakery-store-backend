@@ -239,18 +239,20 @@ export class ProductsService {
 
     // Map dữ liệu để định dạng lại kết quả
     return products.map((product) => ({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      description: product.description,
-      imgPath: product.img_path,
-      maxDailyQuantityLimit: product.max_daily_quantity_limit,
-      productCapacityPerBatch: product.product_capacity_per_batch,
-      category: product.category?.name || null, // Lấy tên category nếu có
-      productToppings: product.productToppings.map((productTopping) => ({
+      product: {
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        description: product.description,
+        img_path: product.img_path,
+        max_daily_quantity_limit: product.max_daily_quantity_limit,
+        product_capacity_per_batch: product.product_capacity_per_batch,
+        category: product.category?.name || null, // Lấy tên category nếu có
+      },
+      toppings: product.productToppings.map((productTopping) => ({
         id: productTopping.topping.id,
-        toppingName: productTopping.topping.name,
-        toppingPrice: productTopping.topping.price,
+        name: productTopping.topping.name,
+        price: productTopping.topping.price,
       })),
       recipeDetails: product.recipes.flatMap((recipe) =>
         recipe.recipeDetails.map((detail) => ({
