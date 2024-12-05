@@ -19,6 +19,7 @@ import { PrismaModule } from './modules/prisma/prisma.module';
 import { PaypalModule } from './payments/paypal/paypal.module';
 import { VnpayModule } from './payments/vnpay/vnpay.module';
 import { PrismaService } from './modules/prisma/prisma.service';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { PrismaService } from './modules/prisma/prisma.service';
     OrderDetailProcessesModule,
     OvensModule,
     OrderProductToppingsModule,
+    DashboardModule,
     PrismaModule,
     PaypalModule,
     VnpayModule,
